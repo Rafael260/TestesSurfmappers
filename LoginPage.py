@@ -9,6 +9,7 @@ class LoginPage(BasePage):
 
 	def __init__(self,browser,baseUrl):
 		super(LoginPage,self).__init__(browser, baseUrl)
+		pass
 
 	def fazer_login(self,usuario,senha):
 		utilidades.logar(self.browser,usuario,senha)

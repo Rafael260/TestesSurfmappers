@@ -12,7 +12,7 @@ paginaLogin = LoginPage(driver,base_url)
 paginaPrincipal = paginaLogin.fazer_login("oliveira.rafael203@gmail.com","rafaelteste")
 paginaBusca = paginaPrincipal.abrir_pagina_busca()
 paginaBusca.buscar_praia("Rio Grande do Norte","Ponta negra")
-if(paginaBusca.possui_resultados()):
+if(paginaBusca.possui_resultados("Ponta Negra")):
     print("Busca OK")
 else:
     print("Busca não retornou resultado!")

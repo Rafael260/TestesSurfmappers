@@ -13,6 +13,7 @@ import sys
 
 def acessar(driver, url):
 	driver.get(url)
+	pass
 
 def logar(driver, usuario, senha):
 	clicar(driver,By.LINK_TEXT,"Entrar")
@@ -59,52 +60,6 @@ def digitar(driver, maneiraProcura, elemento, texto):
 		elemento.send_keys(texto)
 	pass
 
-def get_diretorio_atual():
-	return os.path.dirname(os.path.abspath(__file__))
-
-def read(filename, encoding='utf-8', errors='strict'):
-    with open(filename, 'rb') as f:
-        return f.read().decode(encoding, errors=errors)
-
-def get_parametros_script(nomeScript):
-	nomeArquivoParametros = nomeScript.replace(".py","") + "_parametros.txt"
-	diretorioAtual = get_diretorio_atual()
-	conteudo = read(diretorioAtual + "\\" + nomeArquivoParametros)
-	linhas = conteudo.split("\n")
-	parametros = {}
-	for linha in linhas:
-		divisaoParametro = linha.split('=')
-		if (len(divisaoParametro) > 1):
-			parametros[divisaoParametro[0]] = divisaoParametro[1]
-
-	return parametros
-
-def inicializar_diretorio_prints(nomeScript):
-	nomePasta = get_diretorio_pasta_prints(nomeScript)
-	#Se a pasta nao existe ainda, cria
-	if (not os.path.isdir(nomePasta)):
-		os.mkdir(nomePasta)
-	#Se ja existe, apaga os prints que ja existem
-	else:
-		prints = os.listdir(nomePasta)
-		for file in prints:
-			os.remove(nomePasta + '\\'+ file)
-	pass
-
-def get_diretorio_pasta_prints(nomeScript):
-	diretorioAtual = get_diretorio_atual()
-	return diretorioAtual + '\\Documentos\\'+ nomeScript.replace(".py","") + "_prints"
-
-descricoes_prints = []
-
-def tirar_print(driver,nomeScript,descricao):
-	nomePasta = get_diretorio_pasta_prints(nomeScript) 
-	numeroPrint = len(os.listdir(nomePasta)) + 1
-	nomePrint = nomeScript.replace(".py","") + "_print_" + str(numeroPrint)
-	#driver.get_screenshot_as_file(nomePasta +'/' + nomePrint + '.png')
-	driver.save_screenshot(nomePasta +'/' + nomePrint + '.jpg')
-	descricoes_prints.append(descricao)
-
 def coletar_nome_para_url(nome,separador):
 	return nome.lower().replace(" ", separador)
 
@@ -112,8 +67,10 @@ def selecionar_opcao_combobox(driver,procuraSelect,elementoCb,selecionado):
 	expressaoXpath = "//select[@procuraSelect='elementoCb']/option[text()='selecionado']"
 	expressaoXpath = expressaoXpath.replace("procuraSelect",procuraSelect).replace("elementoCb",elementoCb).replace("selecionado",selecionado)
 	driver.find_element_by_xpath(expressaoXpath).click()
+	pass
 
 def clicar_no_botao(driver,tipoElementoHtml,textoBotao):
 	expressaoXpath =  "//tipoElementoHtml[contains(text(), 'textoBotao')]"
 	expressaoXpath = expressaoXpath.replace("tipoElementoHtml", tipoElementoHtml).replace("textoBotao",textoBotao)
 	driver.find_element_by_xpath(expressaoXpath).click()
+	pass

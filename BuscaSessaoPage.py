@@ -17,9 +17,9 @@ class BuscaSessaoPage(BasePage):
         utilidades.acessar(self.browser,self.baseUrl+"/album/list?country=brazil&state=" + estadoUrl + "&spot=" + nomePraiaUrl)
         pass
 
-    def possui_resultados(self):
+    def possui_resultados(self, nomePraia):
         try:
-            utilidades.esperar_elemento(self.browser,By.PARTIAL_LINK_TEXT,"Ponta Negra",10)
+            utilidades.esperar_elemento(self.browser,By.PARTIAL_LINK_TEXT,nomePraia,10)
             return True
         except:
             return False
