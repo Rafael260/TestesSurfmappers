@@ -4,8 +4,9 @@ sys.path.append('...')
 import utilidades
 
 class BasePage:
-	def __init__(self, browser):
+	def __init__(self, browser, baseUrl):
 		self.browser = browser
+		self.baseUrl = baseUrl
 		pass
 
 	def acessar(self,url):

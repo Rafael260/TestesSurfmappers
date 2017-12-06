@@ -32,6 +32,13 @@ def esperar_elemento(driver, maneiraProcura, elemento, tempoLimite):
 	WebDriverWait(driver, tempoLimite).until(
         EC.presence_of_element_located((maneiraProcura, elemento)))
 	time.sleep(2)
+	pass
+
+def esperar_elemento_visivel(driver, maneiraProcura, elemento, tempoLimite):
+	WebDriverWait(driver, tempoLimite).until(
+        EC.visibility_of_element_located((By.CLASS_NAME,"searchbar_option")))
+	time.sleep(1)
+	pass
 
 def encontrar_elemento(driver, maneiraProcura, elemento):
 	return driver.find_element(maneiraProcura,elemento)
@@ -43,12 +50,14 @@ def clicar(driver, maneiraProcura, elemento):
 	elemento = encontrar_elemento(driver, maneiraProcura, elemento)
 	if (elemento != None):
 		elemento.click()
+	pass
 
 def digitar(driver, maneiraProcura, elemento, texto):
 	elemento = encontrar_elemento(driver,maneiraProcura,elemento)
 	if (elemento != None):
 		elemento.clear()
 		elemento.send_keys(texto)
+	pass
 
 def get_diretorio_atual():
 	return os.path.dirname(os.path.abspath(__file__))
@@ -80,6 +89,7 @@ def inicializar_diretorio_prints(nomeScript):
 		prints = os.listdir(nomePasta)
 		for file in prints:
 			os.remove(nomePasta + '\\'+ file)
+	pass
 
 def get_diretorio_pasta_prints(nomeScript):
 	diretorioAtual = get_diretorio_atual()
@@ -94,3 +104,6 @@ def tirar_print(driver,nomeScript,descricao):
 	#driver.get_screenshot_as_file(nomePasta +'/' + nomePrint + '.png')
 	driver.save_screenshot(nomePasta +'/' + nomePrint + '.jpg')
 	descricoes_prints.append(descricao)
+
+def coletar_nome_para_url(nome,separador):
+	return nome.lower().replace(" ", separador)
