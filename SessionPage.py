@@ -4,6 +4,7 @@ sys.path.append('..')
 sys.path.append('...')
 import utilidades
 from BasePage import *
+from HomePage import *
 
 class SessionPage(BasePage):
 
@@ -19,4 +20,9 @@ class SessionPage(BasePage):
 
   def salvar_session(self):
     utilidades.clicar_no_botao(self.browser,"button","Salvar")
+    utilidades.esperar_elemento(self.browser,By.CLASS_NAME,"profile-photo",20)
     pass
+
+  def ir_para_pagina_principal(self):
+    utilidades.acessar(self.browser,self.baseUrl)
+    return HomePage(self.browser,self.baseUrl)

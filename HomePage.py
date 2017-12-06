@@ -22,6 +22,10 @@ class HomePage(BasePage):
 		utilidades.acessar(self.browser,self.baseUrl+"/p/schedule")
 		return SessionPage(self.browser,self.baseUrl)
 
+	def sessao_criada(self,nomePraia,dia,hora):
+		
+		pass
+
 	def sair_do_sistema(self):
 		utilidades.sair(self.browser)
 		return LoginPage(self.browser,self.baseUrl)
