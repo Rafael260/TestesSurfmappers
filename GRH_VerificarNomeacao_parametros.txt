@@ -1,2 +1,0 @@
-matricula=200.976-5
-nomeacaoEsperada=Estagiário
