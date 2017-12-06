@@ -107,3 +107,13 @@ def tirar_print(driver,nomeScript,descricao):
 
 def coletar_nome_para_url(nome,separador):
 	return nome.lower().replace(" ", separador)
+
+def selecionar_opcao_combobox(driver,procuraSelect,elementoCb,selecionado):
+	expressaoXpath = "//select[@procuraSelect='elementoCb']/option[text()='selecionado']"
+	expressaoXpath = expressaoXpath.replace("procuraSelect",procuraSelect).replace("elementoCb",elementoCb).replace("selecionado",selecionado)
+	driver.find_element_by_xpath(expressaoXpath).click()
+
+def clicar_no_botao(driver,tipoElementoHtml,textoBotao):
+	expressaoXpath =  "//tipoElementoHtml[contains(text(), 'textoBotao')]"
+	expressaoXpath = expressaoXpath.replace("tipoElementoHtml", tipoElementoHtml).replace("textoBotao",textoBotao)
+	driver.find_element_by_xpath(expressaoXpath).click()

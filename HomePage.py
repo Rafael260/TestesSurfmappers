@@ -5,6 +5,7 @@ import utilidades
 from BasePage import *
 from LoginPage import *
 from BuscaSessaoPage import *
+from SessionPage import *
 
 class HomePage(BasePage):
 
@@ -16,6 +17,10 @@ class HomePage(BasePage):
 		utilidades.clicar(self.browser,By.LINK_TEXT,"Encontre sua Foto")
 		utilidades.esperar_elemento(self.browser,By.ID,"searchbar_search_btn",30)
 		return BuscaSessaoPage(self.browser,self.baseUrl)
+
+	def abrir_pagina_criar_session(self):
+		utilidades.acessar(self.browser,self.baseUrl+"/p/schedule")
+		return SessionPage(self.browser,self.baseUrl)
 
 	def sair_do_sistema(self):
 		utilidades.sair(self.browser)

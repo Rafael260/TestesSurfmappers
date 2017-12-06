@@ -10,11 +10,8 @@ base_url = "http://200.17.142.223:6500"
 utilidades.acessar(driver,base_url)
 paginaLogin = LoginPage(driver,base_url)
 paginaPrincipal = paginaLogin.fazer_login("oliveira.rafael203@gmail.com","rafaelteste")
-paginaBusca = paginaPrincipal.abrir_pagina_busca()
-paginaBusca.buscar_praia("Rio Grande do Norte","Ponta negra")
-if(paginaBusca.possui_resultados()):
-    print("Busca OK")
-else:
-    print("Busca não retornou resultado!")
-
+paginaSessao = paginaPrincipal.abrir_pagina_criar_session()
+paginaSessao.preencher_informacoes_session("Areia Preta - Natal/RN","16/12/2017","17:35")
+paginaSessao.salvar_session()
+time.sleep(5)
 driver.quit()
